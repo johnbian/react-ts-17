@@ -1,5 +1,5 @@
-const ENV = process.env.VUE_APP_ENV || 'SIT';
-const baseUrl = process.env.VUE_APP_BASEURL;
+const ENV = process.env.REACT_APP_ENV || 'sit';
+const baseUrl = process.env.REACT_APP_BASEURL;
 
 const config = {
   ENV,

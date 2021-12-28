@@ -52,7 +52,6 @@ const instance = axios.default.create({
 // 请求头拦截 处理
 instance.interceptors.request.use((config): any => {
   config.headers = {
-    // 'x-ac-token-ticket': (store.state as any).user.userInfo.token,
   };
   // store.dispatch('num/add');
   return config;

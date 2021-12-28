@@ -1,7 +1,7 @@
 module.exports = {
-  DEV: {
+  dev: {
     '/salesplus': {
-      target: 'http://localhost:19000', // 代理接口
+      target: 'https://mtest.aia.com.cn', // 代理接口
       changeOrigin: true,
       pathRewrite: {'^/salesplus': '/salesplus'},
     },
