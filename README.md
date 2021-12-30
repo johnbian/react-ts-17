@@ -51,7 +51,7 @@ yarn run start
 
 ### Compiles and minifies for production
 ```
-yarn run build:sit
+yarn run build
 ```
 
 ### Compiles and minifies for sit
