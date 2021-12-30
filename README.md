@@ -2,45 +2,65 @@
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Available Scripts
+## 介绍
+适合想用`react，ts`写法开发手机端h5的项目基于`react17.0.1`。状态管理`react-redux`。路由是`react-router`。
 
-In the project directory, you can run:
+### 手机适配方案
+适配上我选择了`viewport`的方案可参考
+[如何在Vue项目中使用vw实现移动端适配](https://www.w3cplus.com/mobile/vw-layout-in-vue.html)
 
-### `npm start`
+[再聊移动端页面的适配](https://www.w3cplus.com/css/vw-for-layout.html)
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+### ui组建
+项目引入的组件库是
+[antd-mobile](https://mobile.ant.design/zh)
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+### 数据请求
+这边对[axios](https://github.com/axios/axios)中的post以及get等方法进行了一些封装。以及拦截器做好了配置，只需加入一些特定的处理。常用的`loading`已经加入。我们项目中还会选择在拦截器中做统一报错处理。
 
-### `npm test`
+### 脚手架修改问题
+1. 加入了env 应用,修改了env.js。匹配多环境。
+2. webpack.config.js 对proxy修改，弃用creat-react-app自带的。将需要proxy的放到 `config/proxy.js`中。
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
-### `npm run build`
+# 记录几个问题
+## 一、safair浏览器兼容问题
+### 1.input 去掉默认样式。
+```css
+ input {
+   border: 0px;
+   outline: none;
+ }
+```
+### 2.image 显示不出 因为Viewport Units Buggyfill的原因。
+```css
+  img {
+    content: normal !important;
+  }
+```
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Project setup
+```
+yarn install
+```
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+### Compiles and hot-reloads for development
+```
+yarn run start
+```
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### Compiles and minifies for production
+```
+yarn run build:sit
+```
 
-### `npm run eject`
+### Compiles and minifies for sit
+```
+yarn run build:sit
+```
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+### Compiles and minifies for uat
+```
+yarn run build:uat
+```
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).

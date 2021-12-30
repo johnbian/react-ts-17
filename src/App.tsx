@@ -1,10 +1,26 @@
 import React from 'react';
 import RouterApp from './router/index';
+import { Loading, Mask } from 'antd-mobile'
+import { connect } from 'react-redux';
 
-function App() {
+
+function App({num}: any) {
   return (
-    <RouterApp />
+    <div>
+      <RouterApp />
+      <Mask visible={num > 0}>
+        <Loading />
+      </Mask>
+    </div>
   );
 }
 
-export default App;
+const mapStateToProps = (state: any) => {
+  return {
+    num: state.loadingCounter.num
+  }
+}
+
+export default connect(
+  mapStateToProps
+)(App);

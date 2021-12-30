@@ -1,9 +1,18 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import logo from './logo.svg';
 import './index.scss';
 import { Button } from 'antd-mobile';
+import { userApi } from '../../api'
 
 function Home() {
+  useEffect(() => {
+    async function fetchData() {
+      // You can await here
+      const response = await userApi.getAgentInfo('01b4')
+      // ...
+    }
+    fetchData();
+  }, [])
   return (
     <div className="App">
       <header className="App-header">

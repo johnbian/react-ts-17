@@ -1,5 +1,8 @@
+import React from 'react';
 import * as axios from 'axios';
 import commonConfig from './config';
+import store from '../store';
+import { add, minus } from '../store/actions/loadingCounter'
 
 /**
  * @author john.bian
@@ -14,10 +17,13 @@ class Fetch {
    * @param url 请求地址
    */
   public async get(url: string): Promise<any> {
+    console.log(url);
     try {
       const ret = await this.ax.get(encodeURI(url));
+      console.log(ret)
       return this.handleResponse(ret);
     } catch (err) {
+      console.log(err)
       return this.commonErrorHandle(err);
     }
   }
@@ -53,16 +59,16 @@ const instance = axios.default.create({
 instance.interceptors.request.use((config): any => {
   config.headers = {
   };
-  // store.dispatch('num/add');
+  store.dispatch(add());
   return config;
 });
 
 // 请求返回 处理
 instance.interceptors.response.use((response): any => {
-  // store.dispatch('num/del');
+  store.dispatch(minus());
   return response;
 }, (err): any => {
-  // store.dispatch('num/del');
+  store.dispatch(minus());
   return err.response;
 });
 
